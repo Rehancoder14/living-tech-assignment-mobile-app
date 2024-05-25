@@ -93,17 +93,28 @@ class LoginPage extends StatelessWidget {
                                       fontWeight: FontWeight.w700),
                                 ),
                               ),
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: const Color(0xff4c505c),
-                                child: IconButton(
-                                    onPressed: () {
-                                      context
-                                          .read<AuthProvider>()
-                                          .login(context: context);
-                                    },
-                                    icon: const Icon(Icons.arrow_forward)),
-                              )
+                              Consumer<AuthProvider>(
+                                  builder: (context, provider, _) {
+                                return CircleAvatar(
+                                  radius: 30,
+                                  backgroundColor: const Color(0xff4c505c),
+                                  child: provider.isLoadingLogin
+                                      ? const CircularProgressIndicator(
+                                          color: Colors.white,
+                                        )
+                                      : IconButton(
+                                          onPressed: () {
+                                            context
+                                                .read<AuthProvider>()
+                                                .login(context: context);
+                                          },
+                                          icon: const Icon(
+                                            Icons.arrow_forward,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                );
+                              })
                             ],
                           ),
                           Row(

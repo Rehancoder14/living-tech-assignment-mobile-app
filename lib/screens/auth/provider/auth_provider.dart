@@ -56,13 +56,15 @@ class AuthProvider extends ChangeNotifier {
       (l) {
         Utils.showSnackBar(l.error ?? 'Something went wrong');
       },
-      (r) => {
+      (r) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const DashboardScreen(),
           ),
-        ),
+        );
+        loginEmailController.clear();
+        loginPassController.clear();
       },
     );
     isLoadingLogin = false;
@@ -81,13 +83,16 @@ class AuthProvider extends ChangeNotifier {
       (l) {
         Utils.showSnackBar(l.error ?? 'Something went wrong');
       },
-      (r) => {
+      (r) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => LoginPage(),
           ),
-        ),
+        );
+        regEmailController.clear();
+        regPassController.clear();
+        regUserNameController.clear();
       },
     );
     isLoadingReg = false;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:livingtechassignment/screens/auth/provider/auth_provider.dart';
 import 'package:livingtechassignment/screens/auth/view/login_screen.dart';
+import 'package:livingtechassignment/screens/dashboard/provider/dashboard_provider.dart';
 import 'package:livingtechassignment/screens/dashboard/view/dashboard.dart';
 import 'package:livingtechassignment/services/api_service.dart';
 import 'package:livingtechassignment/services/local_storage_service.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<AuthProvider>(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider<DashboardProvider>(
+          create: (context) => DashboardProvider(),
         ),
       ],
       child: MaterialApp(
